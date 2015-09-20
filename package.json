@@ -1,0 +1,9 @@
+{
+  "name": "best-tiebreaker",
+  "version": "0.0.1",
+  "dependencies": {
+    "pi-gpio": "0.0.7"
+  }
+  "repository": "https://github.com/amullins83/BESTTiebreaker.git"
+}
+
