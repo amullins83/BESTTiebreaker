@@ -5,6 +5,9 @@
     "bluebird": "~2.10.0",
     "wiring-pi": "~2.1.0"
   },
+  "scripts": {
+	  "start": "node server.js"
+  },
   "license": "MIT",
   "repository": "https://github.com/amullins83/BESTTiebreaker.git"
 }
