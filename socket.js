@@ -4,7 +4,8 @@ var dgram = require("dgram");
 var TiebreakerSocket = function(port) {
 	this.port = port;
 	this._socket = dgram.createSocket("udp4");
-	this._socket.bind(port, this._handleMessage.bind(this));
+	this._socket.on('message', this._handleMessage.bind(this));
+	this._socket.bind(port);
 	this._status = new TiebreakerStatus();
 };
 
@@ -20,16 +21,16 @@ TiebreakerSocket.prototype._handleMessage = function(msg, rinfo) {
 };
 
 TiebreakerSocket.prototype._sendStatus = function(address) {
-	this._sendMessage(JSON.stringify(this._status), address);
+	this._sendMessage(this._status.toJson(), address);
 };
 
 TiebreakerSocket.prototype._resetStatus = function(address) {
 	this._status.reset();
-	this._socket.sendMessage("OK", address);
+	this._sendMessage("OK", address);
 };
 
 TiebreakerSocket.prototype._sendError = function(address) {
-	this._socket.sendMessage("ERROR", address);
+	this._sendMessage("ERROR", address);
 };
 
 TiebreakerSocket.prototype._sendMessage = function(message, address) {
@@ -37,7 +38,7 @@ TiebreakerSocket.prototype._sendMessage = function(message, address) {
 	this._socket.send(
 		buffer,
 		0,
-		buffer.data.length,
+		buffer.length,
 		this.port,
 		address);
 };

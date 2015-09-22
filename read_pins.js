@@ -46,9 +46,9 @@ PinReader.prototype.openPins = function() {
     wpi.pinMode(pin, wpi.INPUT);
     wpi.pullUpDnControl(pin, wpi.PUD_UP);
     this.pinStates[pin] = UNREAD;
-    setImmediate(function() {
+    setTimeout(function() {
       this._watchPin(pin);
-    }.bind(this));
+    }.bind(this), Math.floor(Math.random() * 10));
   }.bind(this));
 };
 
