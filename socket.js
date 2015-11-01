@@ -21,7 +21,7 @@ TiebreakerSocket.prototype._handleMessage = function(msg, rinfo) {
 };
 
 TiebreakerSocket.prototype._sendStatus = function(address) {
-	this._sendMessage(this._status.toJson(), address);
+	this._sendMessage(this._status.toXml(), address);
 };
 
 TiebreakerSocket.prototype._resetStatus = function(address) {
