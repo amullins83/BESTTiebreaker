@@ -1,6 +1,6 @@
 var Socket = require("./socket");
 
-const DEFAULT_PORT = 33250;
+const DEFAULT_PORT = 32250;
 var port = NaN;
 if (process.argv.length > 2) {
 	port = parseInt(process.argv[2], 10);

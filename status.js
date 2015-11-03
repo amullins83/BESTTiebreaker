@@ -76,6 +76,7 @@ TiebreakerStatus.prototype.toXml = function() {
 	}
 
 	xml += "</DATA>";
+	console.log(xml);
 	return xml;
 }
 
